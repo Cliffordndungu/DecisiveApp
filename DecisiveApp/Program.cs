@@ -1,4 +1,5 @@
 using DecisiveApp.Data;
+using DecisiveApp.Data.Cart;
 using DecisiveApp.Data.Services;
 using DecisiveApp.Models;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -11,6 +12,11 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IDownloadsService, DownloadsService>();
 builder.Services.AddScoped<IReportsService, ReportsService>();
+builder.Services.AddScoped<IOrdersService, OrdersService>();
+builder.Services.AddScoped<IServiceService, ServiceService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -25,7 +31,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();

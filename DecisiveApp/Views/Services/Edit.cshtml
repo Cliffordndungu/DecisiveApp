@@ -1,0 +1,70 @@
+﻿@model Service
+
+@{
+    ViewData["Title"] = "Update a service";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+
+        <p>
+            <h1>Update Service</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="imageurl" class="control-label"></label>
+                        <input asp-for="imageurl" class="form-control" />
+                        <span asp-validation-for="imageurl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label"></label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="description" class="control-label"></label>
+                        <input asp-for="description" class="form-control" />
+                        <span asp-validation-for="description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="pricing" class="control-label"></label>
+                        <input asp-for="pricing" class="form-control" />
+                        <span asp-validation-for="pricing" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ProfilePictureUrl").val();
+        })
+
+        $("#ProfilePictureUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

@@ -18,6 +18,8 @@ namespace DecisiveApp.Data
         public DbSet<Orders> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        public DbSet<Tenant> Tenants { get; set; }
     }
 }
 

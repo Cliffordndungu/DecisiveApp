@@ -1,6 +1,7 @@
 using DecisiveApp.Data;
 using DecisiveApp.Data.Cart;
 using DecisiveApp.Data.Services;
+using DecisiveApp.Data.Settings;
 using DecisiveApp.Models;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,8 @@ builder.Services.AddScoped<IReportsService, ReportsService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<TenantSettings>();
+builder.Services.AddScoped<PayPalService>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews();

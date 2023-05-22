@@ -26,7 +26,7 @@ namespace DecisiveApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("name,description,pricing,Price,imageurl")] Service service)
+        public async Task<IActionResult> Create([Bind("name,description,pricing,Price,imageurl,HasTrial")] Service service)
         {
             if (!ModelState.IsValid)
             {

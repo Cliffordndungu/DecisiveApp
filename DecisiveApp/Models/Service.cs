@@ -14,6 +14,10 @@ namespace DecisiveApp.Models
         public Pricing pricing { get; set; }
         public double Price { get; set; }
         public string imageurl { get; set; }
+        
+        public string HasTrial { get; set; }  
+
+
         //public DateTime Startdate { get; set; }
         //public DateTime Enddate { get; set; }
       

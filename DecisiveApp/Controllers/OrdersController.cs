@@ -1,6 +1,7 @@
 ﻿using DecisiveApp.Data.Cart;
 using DecisiveApp.Data.Services;
 using DecisiveApp.Data.ViewModel;
+using DecisiveApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -12,6 +13,9 @@ namespace DecisiveApp.Controllers
             private readonly IServiceService _serviceService;
             private readonly ShoppingCart _shoppingcart;
             private readonly IOrdersService _ordersService;
+        private readonly Tenant tenant;
+
+         
             public OrdersController(IServiceService serviceService, ShoppingCart shoppingcart, IOrdersService orderservice)
             {
                 _serviceService = serviceService;
@@ -67,11 +71,17 @@ namespace DecisiveApp.Controllers
             public async Task<IActionResult> CompleteOrder()
             {
                 var items = _shoppingcart.GetShoppingCartItems();
+              //  var settings = _serviceService.GetAllAsync();
+
                 string userId = "";
                 string userEmailAddress = "";
 
-                await _ordersService.StoreOrderAsync(items);
-                await _shoppingcart.ClearShoppingCartAsync();
+            await _ordersService.StoreOrderAsync(items);
+            await _shoppingcart.ClearShoppingCartAsync();
+
+           
+
+
 
                 return View("OrderCompleted");
             }
